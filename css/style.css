@@ -13,8 +13,7 @@ body {
 
 /* Numbers */
 .number-conteiner {
-    border: 1px solid red;
-    height: 100vh;
+    height: 50vh;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -38,4 +37,15 @@ body {
 
 .d-none {
     display: none
+}
+
+/* timer cont */
+.timer-cont {
+    width: 100%;
+    height: 30vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;;
 }
