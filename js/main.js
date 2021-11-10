@@ -7,7 +7,26 @@ da indovinare sono stati individuati.
 */
 
 
-//HTML ref
+//generiamo un array di numeri
+
+const numbers = [
+
+]
+
+for (let i = 0; i < 5; i++) {
+    numbers.push(genRand())
+}
+
+console.log(numbers);
+
+
+
+
+
+
+
+
+
 
 
 
