@@ -11,7 +11,9 @@ da indovinare sono stati individuati.
 const numberList = 5;
 const numbers = [];
 
-let userNumb = [];
+const userNumb = [];
+const numberChecked = []
+
 
 for (let i = 0; i < numberList; i++) {
     numbers.push(genRand());
@@ -25,7 +27,7 @@ const numberCont = document.querySelector('.number-conteiner');
 
 
 //timer
-let timer = 3;
+let timer = 30;
 const timerCont = document.querySelector('.timer-cont');
 
 timerCont.innerHTML = timer;
@@ -42,18 +44,15 @@ for (let i = 0; i < numbers.length; i++) {
     
 }
 
+const controlNumb = setTimeout(control, 31000)
+
+
 //chiediamo i numeri all'utente
+  
 
-/* for (let i = 0; i < numberList; i++) {
-    promptNumb()
-} */
-   
-    while (userNumb.length = numbers.length) {
-    const userNumPrompt = parseInt( prompt('primo numero') );
+//confrontiamo i numeri
 
-    userNumb.push(userNumPrompt); 
-    console.log(userNumb);
-} 
+
 
 
 
@@ -82,7 +81,7 @@ function genHTML(numberCont, numbers, num, time) {
 
     numberItem.innerHTML += numbers[num];
 
-    setTimeout(hiddenNumb, 3100)
+    setTimeout(hiddenNumb, 30000)
 
    
 }
@@ -91,7 +90,17 @@ function hiddenNumb() {
     numberCont.classList.add('d-none');
 
     //stoppiamo il timer allo 0
-    clearInterval(time)
+
+    //chiediamo i numeri all'utente
+    while (userNumb.length < numberList) {
+        const userNumPrompt = parseInt(prompt('inserisci un numero che ricordi'));
+    
+        if (!isNaN(userNumPrompt)) {
+            userNumb.push(userNumPrompt); 
+    
+        }
+        console.log(userNumb);
+    };
 
 }
 
@@ -112,5 +121,44 @@ function promptNumb() {
     const userNumPrompt = parseInt( prompt('primo numero') );
 
     userNumb.push(userNumPrompt); 
+        
+}
+
+
+//confrontiamo i numeri
+function control() {
+    numberCont.classList.remove('d-none'); 
+
+    for (let i = 0; i < numberList; i++) {
+        if (userNumb.includes(numbers[i])) {
+            numberChecked.push(numbers[i]);
+        } 
+    }
+
+    if (numberChecked.length != 0) {
+        clearInterval(time)
+        numberCont.classList.remove('d-none');
+        timerCont.innerHTML = `Hai indovinato ${numberChecked.length} numeri`;
+    } else {
+        clearInterval(time)
+        timerCont.innerHTML = `Non hai indovinato nessun numero`
+    }
+    console.log(numberChecked);
+
+    
+    const allNum = document.querySelectorAll('.number-items');
+
+    for (let i = 0; i < numberList; i++) {
+
+
+        if (!numberChecked.includes(parseInt(allNum[i].innerHTML))) {
+            allNum[i].innerHTML = '';
+        }    
+    }
+    
+    
+    
+    
+    
 }
 
