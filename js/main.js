@@ -29,17 +29,13 @@ for (let i = 0; i < numbers.length; i++) {
     
 }
 
+//timer
+let timer = 30;
+const timerCont = document.querySelector('.timer-cont');
 
+const time = setInterval(reduceTime, 1000)
 
-
-
-
-
-
-
-
-
-
+console.log(time);
 
 
 
@@ -67,4 +63,8 @@ function genHTML(numberCont, numbers, num) {
 
 function hiddenNumb() {
     numberCont.classList.add('d-none')
+}
+
+function reduceTime() {
+    return --timer
 }
