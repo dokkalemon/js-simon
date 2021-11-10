@@ -47,24 +47,6 @@ for (let i = 0; i < numbers.length; i++) {
 const controlNumb = setTimeout(control, 31000)
 
 
-//chiediamo i numeri all'utente
-  
-
-//confrontiamo i numeri
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //-----------------FUNCTION----------------//
 //generiamo numeri random
@@ -86,24 +68,22 @@ function genHTML(numberCont, numbers, num, time) {
    
 }
 
+//nascondiamo i numeri
 function hiddenNumb() {
     numberCont.classList.add('d-none');
 
-    //stoppiamo il timer allo 0
-
     //chiediamo i numeri all'utente
     while (userNumb.length < numberList) {
-        const userNumPrompt = parseInt(prompt('inserisci un numero che ricordi'));
+        const userNumPrompt = parseInt(prompt('Inserisci un numero che ricordi'));
     
         if (!isNaN(userNumPrompt)) {
             userNumb.push(userNumPrompt); 
     
         }
-        console.log(userNumb);
     };
-
 }
 
+//riduciamo il tempo
 function reduceTime() {
     timer--;
 
@@ -143,13 +123,11 @@ function control() {
         clearInterval(time)
         timerCont.innerHTML = `Non hai indovinato nessun numero`
     }
-    console.log(numberChecked);
 
-    
+    //togliamo i numeri non indovinati
     const allNum = document.querySelectorAll('.number-items');
 
     for (let i = 0; i < numberList; i++) {
-
 
         if (!numberChecked.includes(parseInt(allNum[i].innerHTML))) {
             allNum[i].innerHTML = '';
