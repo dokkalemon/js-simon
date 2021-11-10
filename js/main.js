@@ -8,16 +8,26 @@ da indovinare sono stati individuati.
 
 
 //generiamo un array di numeri
+const numberList = 5;
+const numbers = [];
 
-const numbers = [
-
-]
-
-for (let i = 0; i < 5; i++) {
-    numbers.push(genRand())
-}
+for (let i = 0; i < numberList; i++) {
+    numbers.push(genRand());
+};
 
 console.log(numbers);
+
+
+//hetml ref
+const numberCont = document.querySelector('.number-conteiner');
+
+//costruiamo la struttura html
+for (let i = 0; i < numbers.length; i++) {
+
+   const number = genHTML(numberCont, numbers, i)
+
+   
+}
 
 
 
@@ -40,4 +50,11 @@ function genRand() {
     return Math.floor( Math.random() * 100 + 1)
 }
 
+function genHTML(numberCont, numbers, num) {
+    const numberItem = document.createElement('div');
+    numberItem.classList.add('number-items')
+    numberCont.append(numberItem);
 
+    numberItem.innerHTML += numbers[num]
+
+}

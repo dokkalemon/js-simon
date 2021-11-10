@@ -29,11 +29,10 @@ body {
     align-items: center;
     background-color: #fff;
     margin: 5px;
-}
-
-.number-items p {
     font-size: 50px;
 }
+
+
 
 .d-none {
     display: none
