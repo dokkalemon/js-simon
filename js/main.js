@@ -24,9 +24,12 @@ const numberCont = document.querySelector('.number-conteiner');
 //costruiamo la struttura html con i numeri dell'array
 for (let i = 0; i < numbers.length; i++) {
 
-   const number = genHTML(numberCont, numbers, i)
+   const number = genHTML(numberCont, numbers, i);
 
+    
 }
+
+
 
 
 
@@ -50,11 +53,18 @@ function genRand() {
     return Math.floor( Math.random() * 100 + 1)
 }
 
+//funzione per generare la struttura
 function genHTML(numberCont, numbers, num) {
     const numberItem = document.createElement('div');
     numberItem.classList.add('number-items')
     numberCont.append(numberItem);
 
-    numberItem.innerHTML += numbers[num]
+    numberItem.innerHTML += numbers[num];
 
+    setTimeout(hiddenNumb, 3000)
+}
+
+
+function hiddenNumb() {
+    numberCont.classList.add('d-none')
 }
