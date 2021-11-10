@@ -11,6 +11,8 @@ da indovinare sono stati individuati.
 const numberList = 5;
 const numbers = [];
 
+let userNumb = [];
+
 for (let i = 0; i < numberList; i++) {
     numbers.push(genRand());
 };
@@ -21,21 +23,44 @@ console.log(numbers);
 //hetml ref
 const numberCont = document.querySelector('.number-conteiner');
 
+
+//timer
+let timer = 3;
+const timerCont = document.querySelector('.timer-cont');
+
+timerCont.innerHTML = timer;
+
+
+const time = setInterval(reduceTime, 1000)
+
+
 //costruiamo la struttura html con i numeri dell'array
 for (let i = 0; i < numbers.length; i++) {
 
-   const number = genHTML(numberCont, numbers, i);
+   const number = genHTML(numberCont, numbers, i, time);
 
     
 }
 
-//timer
-let timer = 30;
-const timerCont = document.querySelector('.timer-cont');
+//chiediamo i numeri all'utente
 
-const time = setInterval(reduceTime, 1000)
+/* for (let i = 0; i < numberList; i++) {
+    promptNumb()
+} */
+   
+    while (userNumb.length = numbers.length) {
+    const userNumPrompt = parseInt( prompt('primo numero') );
 
-console.log(time);
+    userNumb.push(userNumPrompt); 
+    console.log(userNumb);
+} 
+
+
+
+
+
+
+
 
 
 
@@ -50,21 +75,42 @@ function genRand() {
 }
 
 //funzione per generare la struttura
-function genHTML(numberCont, numbers, num) {
+function genHTML(numberCont, numbers, num, time) {
     const numberItem = document.createElement('div');
     numberItem.classList.add('number-items')
     numberCont.append(numberItem);
 
     numberItem.innerHTML += numbers[num];
 
-    setTimeout(hiddenNumb, 3000)
+    setTimeout(hiddenNumb, 3100)
+
+   
 }
 
-
 function hiddenNumb() {
-    numberCont.classList.add('d-none')
+    numberCont.classList.add('d-none');
+
+    //stoppiamo il timer allo 0
+    clearInterval(time)
+
 }
 
 function reduceTime() {
-    return --timer
+    timer--;
+
+   timerCont.innerHTML = timer;
+
+   if (timer <= 5) {
+       timerCont.style.color = 'red';
+   }
+
 }
+
+
+//chiediamo i numeri
+function promptNumb() {
+    const userNumPrompt = parseInt( prompt('primo numero') );
+
+    userNumb.push(userNumPrompt); 
+}
+
