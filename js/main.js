@@ -21,13 +21,13 @@ console.log(numbers);
 //hetml ref
 const numberCont = document.querySelector('.number-conteiner');
 
-//costruiamo la struttura html
+//costruiamo la struttura html con i numeri dell'array
 for (let i = 0; i < numbers.length; i++) {
 
    const number = genHTML(numberCont, numbers, i)
 
-   
 }
+
 
 
 
